@@ -1,5 +1,9 @@
 @import url("./reset.css");
 
+body {
+  background-color: #f9fafb;
+}
+
 .main-container {
   display: flex;
   height: 100vh;
@@ -7,10 +11,78 @@
 
 .figure-container {
   flex: 1 1 0;
-  background-color: rgb(125, 223, 98);
+  /*background-color: rgb(125, 223, 98);*/
+  background-image: url("../assets/images/mountain-by-samuel-ferrara.jpg");
+  background-size: cover;
+  /*background-position: center;*/
 }
 
 .form-container {
   flex: 2 1 0;
-  background-color: rgb(20, 20, 20);
+  /*background-color: inherit;*/
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+  gap: 40px;
+}
+
+.title-container > p {
+  width: 580px;
+  font-weight: bold;
+  font-size: 1.25rem;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.button-container {
+  align-self: flex-start;
+}
+
+.button-container > button {
+  padding: 8px 24px;
+}
+
+.title-container > p,
+form > fieldset > legend,
+form > fieldset > ul,
+.button-container > button,
+.log-in-container > p {
+  margin-left: 32px;
+}
+
+form > fieldset {
+  margin: 0;
+  border-style: none;
+  background-color: white;
+  padding: 16px 0 32px 0;
+}
+
+form > fieldset > legend {
+  font-weight: bold;
+}
+
+form > fieldset > ul{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+form > fieldset > ul > li {
+  flex-basis: 40%;
+  display: flex;
+  flex-direction: column;
+}
+
+form > fieldset > ul > li > label {
+  width: fit-content;
+  font-size: 0.9rem;
+}
+
+form > fieldset > ul > li > input {
+  width: 75%;
 }

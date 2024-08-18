@@ -1,18 +1,74 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Sign-up Form</title>
-    <link href="css/style.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet" />
   </head>
   <body>
-      <div class="main-container">
-      <div class="figure-container">
-
-      </div>
+    <div class="main-container">
+      <div class="figure-container"></div>
       <div class="form-container">
+        <div class="title-container">
+          <p>
+            This is not a real online service! You know you need something like
+            this in your life to help you realize your deepest dreams.<br>
+            Sign up <em>now</em> &nbsp;to get started.
+          </p>
+          <br>
 
+          <p>You <em>know</em> &nbsp;you want to.</p>
+        </div>
+
+        <form action="whatever" method="post">
+          <fieldset>
+            <legend>Let's do this!</legend>
+            <ul class="form-input-container" role="list">
+              <li>
+                <label for="first-name">FIRST NAME</label>
+                <input type="text" name="first_name" id="first-name" />
+              </li>
+
+              <li>
+                <label for="last-name">LAST NAME</label>
+                <input type="text" name="last_name" id="last-name" />
+              </li>
+
+              <li>
+                <label for="email">EMAIL</label>
+                <input type="email" name="email" id="email" />
+              </li>
+
+              <li>
+                <label for="phone-number">PHONE NUMBER</label>
+                <input type="tel" name="phone_number" id="phone-number" />
+              </li>
+
+              <li>
+                <label for="password">PASSWORD</label>
+                <input type="password" name="password" id="password" />
+              </li>
+
+              <li>
+                <label for="confirm-password">CONFIRM PASSWORD</label>
+                <input
+                  type="password"
+                  name="confirm_password"
+                  id="confirm-password"
+                />
+              </li>
+            </ul>
+          </fieldset>
+
+          <div class="button-container">
+            <button type="submit">Create Account</button>
+          </div>
+
+          <div class="log-in-container">
+            <p>Already have an account? <a href="#">Log in</a></p>
+          </div>
+        </form>
       </div>
     </div>
   </body>
