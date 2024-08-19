@@ -44,13 +44,17 @@ for (const name in D_FIELD_S) {
           if (IsNameValid(event.target.value)) {
             D_FIELD_S[name].d_li.classList.remove("error");
             D_FIELD_S[name].d_li.classList.add("valid");
+            D_FIELD_S[name].d_label.classList.remove("label-error");
+            D_FIELD_S[name].d_label.classList.add("label-valid");
           } else {
             D_FIELD_S[name].d_li.classList.remove("valid");
             D_FIELD_S[name].d_li.classList.add("error");
+            D_FIELD_S[name].d_label.classList.remove("label-valid");
+            D_FIELD_S[name].d_label.classList.add("label-error");
           }
         } else {
-          D_FIELD_S[name].d_li.classList.remove("valid");
-          D_FIELD_S[name].d_li.classList.remove("error");
+          D_FIELD_S[name].d_li.classList.remove("valid", "error");
+          D_FIELD_S[name].d_label.classList.remove("label-valid", "label-error");
         }
       });
       break;
@@ -60,13 +64,17 @@ for (const name in D_FIELD_S) {
           if (IsEmailValid(event.target.value)) {
             D_FIELD_S[name].d_li.classList.remove("error");
             D_FIELD_S[name].d_li.classList.add("valid");
+            D_FIELD_S[name].d_label.classList.remove("label-error");
+            D_FIELD_S[name].d_label.classList.add("label-valid");
           } else {
             D_FIELD_S[name].d_li.classList.remove("valid");
             D_FIELD_S[name].d_li.classList.add("error");
+            D_FIELD_S[name].d_label.classList.remove("label-valid");
+            D_FIELD_S[name].d_label.classList.add("label-error");
           }
         } else {
-          D_FIELD_S[name].d_li.classList.remove("valid");
-          D_FIELD_S[name].d_li.classList.remove("error");
+          D_FIELD_S[name].d_li.classList.remove("valid", "error");
+          D_FIELD_S[name].d_label.classList.remove("label-valid", "label-error");
         }
       });
       break;
@@ -76,13 +84,17 @@ for (const name in D_FIELD_S) {
           if (IsPhoneNumberValid(event.target.value)) {
             D_FIELD_S[name].d_li.classList.remove("error");
             D_FIELD_S[name].d_li.classList.add("valid");
+            D_FIELD_S[name].d_label.classList.remove("label-error");
+            D_FIELD_S[name].d_label.classList.add("label-valid");
           } else {
             D_FIELD_S[name].d_li.classList.remove("valid");
             D_FIELD_S[name].d_li.classList.add("error");
+            D_FIELD_S[name].d_label.classList.remove("label-valid");
+            D_FIELD_S[name].d_label.classList.add("label-error");
           }
         } else {
-          D_FIELD_S[name].d_li.classList.remove("valid");
-          D_FIELD_S[name].d_li.classList.remove("error");
+          D_FIELD_S[name].d_li.classList.remove("valid", "error");
+          D_FIELD_S[name].d_label.classList.remove("label-valid", "label-error");
         }
       });
       break;
@@ -124,19 +136,20 @@ for (const name in D_FIELD_S) {
           );
           D_FIELD_S[name].d_label.innerText =
             name === "password" ? "PASSWORD" : "CONFIRM PASSWORD";
-          console.log("lhlwa");
         } else if (IsPasswordValid(event.target.value)) {
           D_FIELD_S[name].d_li.classList.remove("error");
           D_FIELD_S[name].d_label.classList.remove("label-error");
           D_FIELD_S[name].d_li.classList.add("valid");
           D_FIELD_S[name].d_label.classList.add("label-valid");
+          D_FIELD_S[name].d_label.innerText =
+            name === "password" ? "PASSWORD" : "CONFIRM PASSWORD";
         } else {
-          D_FIELD_S[name].d_li.classList.remove("valid");
-          D_FIELD_S[name].d_label.classList.remove("label-valid");
+          D_FIELD_S[name].d_li.classList.remove("valid", "warning");
+          D_FIELD_S[name].d_label.classList.remove("label-valid", "label-warning");
           D_FIELD_S[name].d_li.classList.add("error");
           D_FIELD_S[name].d_label.classList.add("label-error");
           D_FIELD_S[name].d_label.innerText =
-            "PASSWORD MUST CONTAIN 8char 1letter 1number 1special";
+            "PASSWORD (sample: P@ssw0rd)";
         }
         if (
           !(
@@ -165,8 +178,8 @@ for (const name in D_FIELD_S) {
               "label-warning",
             );
           } else {
-            D_FIELD_S["password"].d_li.classList.remove("error");
-            D_FIELD_S["confirm_password"].d_li.classList.remove("error");
+            D_FIELD_S["password"].d_li.classList.remove("error", "warning");
+            D_FIELD_S["confirm_password"].d_li.classList.remove("error", "warning");
             D_FIELD_S["password"].d_li.classList.add("valid");
             D_FIELD_S["confirm_password"].d_li.classList.add("valid");
             D_FIELD_S["password"].d_label.innerText = "PASSWORD";

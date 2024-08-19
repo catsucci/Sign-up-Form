@@ -112,7 +112,7 @@ form > fieldset > ul > li {
 
 form > fieldset > ul > li  label {
   /*width: fit-content;*/
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: var(--secondary-color);
 }
 
@@ -133,7 +133,7 @@ form > fieldset > ul > li > input {
 
 input:focus {
   outline: none;
-  border-style: none;
+  /*border-style: none;*/
 }
 
 .in-focus {

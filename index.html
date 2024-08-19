@@ -14,12 +14,12 @@
         <div class="title-container">
           <p>
             This is not a real online service! You know you need something like
-            this in your life to help you realize your deepest dreams.<br>
-            Sign up <em>now</em> &nbsp;to get started.
+            this in your life to help you realize your deepest dreams.<br />
+            Sign up <em>now</em> to get started.
           </p>
-          <br>
+          <br />
 
-          <p>You <em>know</em> &nbsp;you want to.</p>
+          <p>You <em>know</em> you want to.</p>
         </div>
 
         <form action="whatever" method="post">
@@ -27,36 +27,54 @@
             <legend>Let's do this!</legend>
             <ul class="form-input-container" role="list">
               <li>
-                <label for="first-name">FIRST NAME</label>
-                <input type="text" name="first_name" id="first-name" />
+                <label for="first-name"
+                  >FIRST NAME <span aria-label="required">*</span></label
+                >
+                <input type="text" name="first_name" id="first-name" required />
               </li>
 
               <li>
-                <label for="last-name">LAST NAME</label>
-                <input type="text" name="last_name" id="last-name" />
+                <label for="last-name"
+                  >LAST NAME <span aria-label="required">*</span></label
+                >
+                <input type="text" name="last_name" id="last-name" required />
               </li>
 
               <li>
-                <label for="email">EMAIL</label>
-                <input type="email" name="email" id="email" />
+                <label for="email"
+                  >EMAIL <span aria-label="required">*</span></label
+                >
+                <input type="email" name="email" id="email" required />
               </li>
 
               <li>
-                <label for="phone-number">PHONE NUMBER</label>
-                <input type="tel" name="phone_number" id="phone-number" />
+                <label for="phone-number"
+                  >PHONE NUMBER <span aria-label="required">*</span></label
+                >
+                <input
+                  type="tel"
+                  name="phone_number"
+                  id="phone-number"
+                  required
+                />
               </li>
 
               <li>
-                <label for="password">PASSWORD</label>
-                <input type="password" name="password" id="password" />
+                <label for="password"
+                  >PASSWORD <span aria-label="required">*</span></label
+                >
+                <input type="password" name="password" id="password" required />
               </li>
 
               <li>
-                <label for="confirm-password">CONFIRM PASSWORD</label>
+                <label for="confirm-password"
+                  >CONFIRM PASSWORD <span aria-label="required">*</span></label
+                >
                 <input
                   type="password"
                   name="confirm_password"
                   id="confirm-password"
+                  required
                 />
               </li>
             </ul>
