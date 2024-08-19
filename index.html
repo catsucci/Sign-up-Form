@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Sign-up Form</title>
+    <title>Sign Up</title>
     <link href="css/style.css" rel="stylesheet" />
     <script type="module" src="src/main.js" defer></script>
   </head>
@@ -44,7 +44,13 @@
                 <label for="email"
                   >EMAIL <span aria-label="required">*</span></label
                 >
-                <input type="email" name="email" id="email" required />
+                <input
+                  type="email"
+                  name="email"
+                  id="email"
+                  required
+                  autocomplete="email"
+                />
               </li>
 
               <li>
@@ -63,7 +69,13 @@
                 <label for="password"
                   >PASSWORD <span aria-label="required">*</span></label
                 >
-                <input type="password" name="password" id="password" required />
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  required
+                  autocomplete="new-password"
+                />
               </li>
 
               <li>
@@ -75,6 +87,7 @@
                   name="confirm_password"
                   id="confirm-password"
                   required
+                  autocomplete="new-password"
                 />
               </li>
             </ul>

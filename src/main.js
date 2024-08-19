@@ -16,6 +16,13 @@ import {
   IsPasswordsMatching,
 } from "./utils.js";
 
+const STATES = {
+  VALID: "valid",
+  ERROR: "error",
+  WARNING: "warning",
+  NILL: null,
+};
+
 let D_FIELD_S = {};
 document.querySelectorAll("li").forEach((d_li) => {
   let name = d_li.querySelector("input").getAttribute("name");
@@ -38,23 +45,18 @@ for (const name in D_FIELD_S) {
   switch (name) {
     case "first_name":
     case "last_name":
-      console.log(D_FIELD_S[name].d_input.value);
       D_FIELD_S[name].d_input.addEventListener("input", (event) => {
         if (!IsEmpty(event.target.value)) {
           if (IsNameValid(event.target.value)) {
-            D_FIELD_S[name].d_li.classList.remove("error");
-            D_FIELD_S[name].d_li.classList.add("valid");
-            D_FIELD_S[name].d_label.classList.remove("label-error");
-            D_FIELD_S[name].d_label.classList.add("label-valid");
+            HandleNodeStates(D_FIELD_S[name].d_li, STATES.VALID);
+            HandleNodeStates(D_FIELD_S[name].d_label, STATES.VALID);
           } else {
-            D_FIELD_S[name].d_li.classList.remove("valid");
-            D_FIELD_S[name].d_li.classList.add("error");
-            D_FIELD_S[name].d_label.classList.remove("label-valid");
-            D_FIELD_S[name].d_label.classList.add("label-error");
+            HandleNodeStates(D_FIELD_S[name].d_li, STATES.ERROR);
+            HandleNodeStates(D_FIELD_S[name].d_label, STATES.ERROR);
           }
         } else {
-          D_FIELD_S[name].d_li.classList.remove("valid", "error");
-          D_FIELD_S[name].d_label.classList.remove("label-valid", "label-error");
+          HandleNodeStates(D_FIELD_S[name].d_li, STATES.NILL);
+          HandleNodeStates(D_FIELD_S[name].d_label, STATES.NILL);
         }
       });
       break;
@@ -62,19 +64,15 @@ for (const name in D_FIELD_S) {
       D_FIELD_S[name].d_input.addEventListener("input", (event) => {
         if (!IsEmpty(event.target.value)) {
           if (IsEmailValid(event.target.value)) {
-            D_FIELD_S[name].d_li.classList.remove("error");
-            D_FIELD_S[name].d_li.classList.add("valid");
-            D_FIELD_S[name].d_label.classList.remove("label-error");
-            D_FIELD_S[name].d_label.classList.add("label-valid");
+            HandleNodeStates(D_FIELD_S[name].d_li, STATES.VALID);
+            HandleNodeStates(D_FIELD_S[name].d_label, STATES.VALID);
           } else {
-            D_FIELD_S[name].d_li.classList.remove("valid");
-            D_FIELD_S[name].d_li.classList.add("error");
-            D_FIELD_S[name].d_label.classList.remove("label-valid");
-            D_FIELD_S[name].d_label.classList.add("label-error");
+            HandleNodeStates(D_FIELD_S[name].d_li, STATES.ERROR);
+            HandleNodeStates(D_FIELD_S[name].d_label, STATES.ERROR);
           }
         } else {
-          D_FIELD_S[name].d_li.classList.remove("valid", "error");
-          D_FIELD_S[name].d_label.classList.remove("label-valid", "label-error");
+          HandleNodeStates(D_FIELD_S[name].d_li, STATES.NILL);
+          HandleNodeStates(D_FIELD_S[name].d_label, STATES.NILL);
         }
       });
       break;
@@ -82,19 +80,15 @@ for (const name in D_FIELD_S) {
       D_FIELD_S[name].d_input.addEventListener("input", (event) => {
         if (!IsEmpty(event.target.value)) {
           if (IsPhoneNumberValid(event.target.value)) {
-            D_FIELD_S[name].d_li.classList.remove("error");
-            D_FIELD_S[name].d_li.classList.add("valid");
-            D_FIELD_S[name].d_label.classList.remove("label-error");
-            D_FIELD_S[name].d_label.classList.add("label-valid");
+            HandleNodeStates(D_FIELD_S[name].d_li, STATES.VALID);
+            HandleNodeStates(D_FIELD_S[name].d_label, STATES.VALID);
           } else {
-            D_FIELD_S[name].d_li.classList.remove("valid");
-            D_FIELD_S[name].d_li.classList.add("error");
-            D_FIELD_S[name].d_label.classList.remove("label-valid");
-            D_FIELD_S[name].d_label.classList.add("label-error");
+            HandleNodeStates(D_FIELD_S[name].d_li, STATES.ERROR);
+            HandleNodeStates(D_FIELD_S[name].d_label, STATES.ERROR);
           }
         } else {
-          D_FIELD_S[name].d_li.classList.remove("valid", "error");
-          D_FIELD_S[name].d_label.classList.remove("label-valid", "label-error");
+          HandleNodeStates(D_FIELD_S[name].d_li, STATES.NILL);
+          HandleNodeStates(D_FIELD_S[name].d_label, STATES.NILL);
         }
       });
       break;
@@ -105,53 +99,25 @@ for (const name in D_FIELD_S) {
           IsEmpty(D_FIELD_S["password"].d_input.value) &&
           IsEmpty(D_FIELD_S["confirm_password"].d_input.value)
         ) {
-          D_FIELD_S["password"].d_label.classList.remove(
-            "label-warning",
-            "label-valid",
-            "label-error",
-          );
-          D_FIELD_S["confirm_password"].d_label.classList.remove(
-            "label-warning",
-            "label-valid",
-            "label-error",
-          );
-          D_FIELD_S["password"].d_li.classList.remove(
-            "valid",
-            "error",
-            "warning",
-          );
-          D_FIELD_S["confirm_password"].d_li.classList.remove(
-            "valid",
-            "error",
-            "warning",
-          );
+          HandleNodeStates(D_FIELD_S["password"].d_li, STATES.NILL);
+          HandleNodeStates(D_FIELD_S["password"].d_label, STATES.NILL);
+          HandleNodeStates(D_FIELD_S["confirm_password"].d_li, STATES.NILL);
+          HandleNodeStates(D_FIELD_S["confirm_password"].d_label, STATES.NILL);
           D_FIELD_S["password"].d_label.innerText = "PASSWORD";
           D_FIELD_S["confirm_password"].d_label.innerText = "CONFIRM PASSWORD";
-        } else if (IsEmpty(D_FIELD_S[name].d_input.value)) {
-          D_FIELD_S[name].d_li.classList.remove("valid", "error", "warning");
-          D_FIELD_S[name].d_label.classList.remove(
-            "label-warning",
-            "label-valid",
-            "label-error",
-          );
-          D_FIELD_S[name].d_label.innerText =
-            name === "password" ? "PASSWORD" : "CONFIRM PASSWORD";
         } else if (IsPasswordValid(event.target.value)) {
-          D_FIELD_S[name].d_li.classList.remove("error");
-          D_FIELD_S[name].d_label.classList.remove("label-error");
-          D_FIELD_S[name].d_li.classList.add("valid");
-          D_FIELD_S[name].d_label.classList.add("label-valid");
+          HandleNodeStates(D_FIELD_S[name].d_li, STATES.VALID);
+          HandleNodeStates(D_FIELD_S[name].d_label, STATES.VALID);
           D_FIELD_S[name].d_label.innerText =
             name === "password" ? "PASSWORD" : "CONFIRM PASSWORD";
         } else {
-          D_FIELD_S[name].d_li.classList.remove("valid", "warning");
-          D_FIELD_S[name].d_label.classList.remove("label-valid", "label-warning");
-          D_FIELD_S[name].d_li.classList.add("error");
-          D_FIELD_S[name].d_label.classList.add("label-error");
-          D_FIELD_S[name].d_label.innerText =
-            "PASSWORD (sample: P@ssw0rd)";
+          // if password format is not valid
+          HandleNodeStates(D_FIELD_S[name].d_li, STATES.ERROR);
+          HandleNodeStates(D_FIELD_S[name].d_label, STATES.ERROR);
+          D_FIELD_S[name].d_label.innerText = "PASSWORD (sample: P@ssw0rd)";
         }
         if (
+          // if both password inputs are not empty
           !(
             IsEmpty(D_FIELD_S["password"].d_input.value) ||
             IsEmpty(D_FIELD_S["confirm_password"].d_input.value)
@@ -161,48 +127,96 @@ for (const name in D_FIELD_S) {
             !IsPasswordsMatching(
               D_FIELD_S["password"].d_input.value,
               D_FIELD_S["confirm_password"].d_input.value,
-            )
+            ) &&
+            (IsPasswordValid(D_FIELD_S["password"].d_input.value) ||
+              IsPasswordValid(D_FIELD_S["confirm_password"].d_input.value))
           ) {
-            D_FIELD_S["password"].d_li.classList.remove("valid", "error");
-            D_FIELD_S["confirm_password"].d_li.classList.remove(
-              "valid",
-              "error",
+            HandleNodeStates(D_FIELD_S["password"].d_li, STATES.WARNING);
+            HandleNodeStates(D_FIELD_S["password"].d_label, STATES.WARNING);
+            HandleNodeStates(
+              D_FIELD_S["confirm_password"].d_li,
+              STATES.WARNING,
             );
-            D_FIELD_S["password"].d_li.classList.add("warning");
-            D_FIELD_S["confirm_password"].d_li.classList.add("warning");
+            HandleNodeStates(
+              D_FIELD_S["confirm_password"].d_label,
+              STATES.WARNING,
+            );
             D_FIELD_S["password"].d_label.innerText = "PASSWORDS DO NOT MATCH";
             D_FIELD_S["confirm_password"].d_label.innerText =
               "PASSWORDS DO NOT MATCH";
-            D_FIELD_S["password"].d_label.classList.add("label-warning");
-            D_FIELD_S["confirm_password"].d_label.classList.add(
-              "label-warning",
+          } else if (
+            IsPasswordValid(D_FIELD_S["password"].d_input.value) &&
+            IsPasswordValid(D_FIELD_S["confirm_password"].d_input.value)
+          ) {
+            // if both password inputs are NOT not matching (yup not twice to be precise)
+            HandleNodeStates(D_FIELD_S["password"].d_li, STATES.VALID);
+            HandleNodeStates(D_FIELD_S["password"].d_label, STATES.VALID);
+            HandleNodeStates(D_FIELD_S["confirm_password"].d_li, STATES.VALID);
+            HandleNodeStates(
+              D_FIELD_S["confirm_password"].d_label,
+              STATES.VALID,
             );
-          } else {
-            D_FIELD_S["password"].d_li.classList.remove("error", "warning");
-            D_FIELD_S["confirm_password"].d_li.classList.remove("error", "warning");
-            D_FIELD_S["password"].d_li.classList.add("valid");
-            D_FIELD_S["confirm_password"].d_li.classList.add("valid");
             D_FIELD_S["password"].d_label.innerText = "PASSWORD";
             D_FIELD_S["confirm_password"].d_label.innerText =
               "CONFIRM PASSWORD";
-            D_FIELD_S["password"].d_label.classList.remove("label-warning");
-            D_FIELD_S["confirm_password"].d_label.classList.remove(
-              "label-warning",
-            );
+          }
+        } else if (IsEmpty(D_FIELD_S[name].d_input.value)) {
+          HandleNodeStates(D_FIELD_S[name].d_label, STATES.NILL);
+          HandleNodeStates(D_FIELD_S[name].d_li, STATES.NILL);
+          D_FIELD_S[name].d_label.innerText =
+            name === "password" ? "PASSWORD" : "CONFIRM PASSWORD";
+          if (name === "password") {
+            if (IsPasswordValid(D_FIELD_S["confirm_password"].d_input.value)) {
+              console.log("Doha");
+              HandleNodeStates(
+                D_FIELD_S["confirm_password"].d_li,
+                STATES.VALID,
+              );
+              HandleNodeStates(
+                D_FIELD_S["confirm_password"].d_label,
+                STATES.VALID,
+              );
+              D_FIELD_S["confirm_password"].d_label.innerText =
+                "CONFIRM PASSWORD";
+              D_FIELD_S["password"].d_label.innerText = "PASSWORD";
+            } else if (!IsEmpty(D_FIELD_S["confirm_password"].d_input.value)){
+              HandleNodeStates(
+                D_FIELD_S["confirm_password"].d_li,
+                STATES.ERROR,
+              );
+              HandleNodeStates(
+                D_FIELD_S["confirm_password"].d_label,
+                STATES.ERROR,
+              );
+              D_FIELD_S["confirm_password"].d_label.innerText =
+                "PASSWORD (sample: P@ssw0rd)";
+            } else {
+
+            }
+          } else {
+            if (IsPasswordValid(D_FIELD_S["password"].d_input.value)) {
+              HandleNodeStates(D_FIELD_S["password"].d_li, STATES.VALID);
+              HandleNodeStates(D_FIELD_S["password"].d_label, STATES.VALID);
+              D_FIELD_S["password"].d_label.innerText = "PASSWORD";
+              D_FIELD_S["password"].d_label.innerText = "CONFIRM PASSWORD";
+            } else {
+              HandleNodeStates(D_FIELD_S["password"].d_li, STATES.ERROR);
+              HandleNodeStates(D_FIELD_S["password"].d_label, STATES.ERROR);
+              D_FIELD_S["password"].d_label.innerText =
+                "PASSWORD (sample: P@ssw0rd)";
+            }
           }
         }
       });
       break;
   }
 }
-//
-//D_INPUT_S.text_s.forEach((d_text) => {
-//  d_text.addEventListener("input", (event) => {
-//    let value = event.target.value;
-//    if (!/\d/.test(value)) {
-//      d_text.classList.remove("in-focus");
-//      d_text.classList.add("error");
-//      console.log("hmar");
-//    }
-//  });
-//});
+
+const HandleNodeStates = (d_node, state) => {
+  for (const key in STATES) {
+    if (STATES.hasOwnProperty(key)) {
+      d_node.classList.remove(STATES[key]);
+    }
+  }
+  d_node.classList.add(state);
+};

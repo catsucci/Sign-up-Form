@@ -142,24 +142,15 @@ input:focus {
 
 .valid {
   border-left-color: var(--green) !important;
+  color: var(--green);
 }
 
 .error {
   border-left-color: var(--red) !important;
+  color: var(--red);
 }
 
 .warning {
   border-left-color: var(--yellow) !important;
-}
-
-.label-valid {
-  color: var(--green);
-}
-
-.label-error {
-  color: var(--red);
-}
-
-.label-warning {
   color: var(--yellow);
 }
