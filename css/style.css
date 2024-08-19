@@ -1,7 +1,19 @@
 @import url("./reset.css");
 
+:root {
+  --bg-color: #2d3250;
+  --primary-accent: #f9b17a;
+  --main-color: #424769;
+  --secondary-color: #676f9d;
+  --white: #ffffff;
+  --green: #4CAF50;
+  --red: #F44336;
+  --yellow: #FFEB3B;
+}
+
 body {
-  background-color: #f9fafb;
+  background-color: var(--bg-color);
+  color: var(--white);
 }
 
 .main-container {
@@ -28,9 +40,13 @@ body {
 }
 
 .title-container > p {
-  width: 580px;
-  font-weight: bold;
+  width: 750px;
+  /*font-weight: bold;*/
   font-size: 1.25rem;
+}
+
+.title-container > p:first-child {
+  font-weight: 700;
 }
 
 form {
@@ -44,7 +60,20 @@ form {
 }
 
 .button-container > button {
-  padding: 8px 24px;
+  padding: 1rem 2rem;
+  /*padding: 12px 28px;*/
+  background-color: var(--primary-accent);
+  border-style: none;
+  border-radius: 5px;
+  color: var(--bg-color);
+  font-weight: 700;
+  box-shadow: 0 0 10px 1px var(--primary-accent);
+  transition: box-shadow 0,3s ease;
+}
+
+.button-container > button:hover {
+  cursor: pointer;
+  box-shadow: 0 0 10px 2px var(--primary-accent);
 }
 
 .title-container > p,
@@ -58,12 +87,12 @@ form > fieldset > ul,
 form > fieldset {
   margin: 0;
   border-style: none;
-  background-color: white;
+  /*background-color: white;*/
   padding: 16px 0 32px 0;
 }
 
 form > fieldset > legend {
-  font-weight: bold;
+  font-weight: 700;
 }
 
 form > fieldset > ul{
@@ -76,13 +105,61 @@ form > fieldset > ul > li {
   flex-basis: 40%;
   display: flex;
   flex-direction: column;
+  background-color: var(--main-color);
+  border-left: 2px solid var(--main-color);
+  padding: 8px;
 }
 
-form > fieldset > ul > li > label {
-  width: fit-content;
+form > fieldset > ul > li  label {
+  /*width: fit-content;*/
   font-size: 0.9rem;
+  color: var(--secondary-color);
 }
 
 form > fieldset > ul > li > input {
-  width: 75%;
+  /*width: 75%;*/
+  height: 2rem;
+  background-color: var(--main-color);
+  color: var(--white);
+  border-style: none;
+  caret-color: var(--white);
+}
+
+.log-in-container > p > a {
+  text-decoration: none;
+  font-weight: 700;
+  color: var(--primary-accent);
+}
+
+input:focus {
+  outline: none;
+  border-style: none;
+}
+
+.in-focus {
+  border-left-color: var(--primary-accent);
+}
+
+.valid {
+  border-left-color: var(--green) !important;
+}
+
+.error {
+  border-left-color: var(--red) !important;
+}
+
+.warning {
+  border-left-color: var(--yellow) !important;
+}
+
+.label-valid {
+  color: var(--green);
+}
+
+.label-error {
+  color: var(--red);
+}
+
+.label-warning {
+  color: var(--yellow);
 }
