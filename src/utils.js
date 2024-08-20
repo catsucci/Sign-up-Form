@@ -33,5 +33,10 @@ export const IsPasswordsMatching = (
   first_password_instance,
   second_password_instance,
 ) => {
+  console.log("first_password_instance:", first_password_instance);
+  console.log("second_password_instance:", second_password_instance);
+  if (first_password_instance === null || second_password_instance === null) {
+    return false;
+  }
   return first_password_instance === second_password_instance;
 };
