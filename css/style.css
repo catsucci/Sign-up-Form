@@ -18,12 +18,11 @@ body {
 
 .main-container {
   display: flex;
-  height: 100vh;
+  height: 100dvh;
 }
 
-.figure-container {
+.image-container {
   flex: 1 1 0;
-  /*background-color: rgb(125, 223, 98);*/
   background-image: url("../assets/images/mountain-by-samuel-ferrara.jpg");
   background-size: cover;
   /*background-position: center;*/
@@ -31,7 +30,6 @@ body {
 
 .form-container {
   flex: 2 1 0;
-  /*background-color: inherit;*/
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -41,7 +39,6 @@ body {
 
 .title-container > p {
   width: 750px;
-  /*font-weight: bold;*/
   font-size: 1.25rem;
 }
 
@@ -81,7 +78,7 @@ form > fieldset > legend,
 form > fieldset > ul,
 .button-container > button,
 .log-in-container > p {
-  margin-left: 32px;
+  margin-left: 3rem;
 }
 
 form > fieldset {
@@ -154,3 +151,39 @@ input:focus {
   border-left-color: var(--yellow) !important;
   color: var(--yellow);
 }
+
+.image-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.logo-container {
+  margin-top: 50%;
+  /*margin-top: 90%;*/
+  /*margin-top: 15%;*/
+  background-color: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+.logo-container > h1 {
+  font-size: 3rem;
+  text-align: center;
+  font-weight: 700;
+}
+
+.climber-icon {
+  width: 4rem;
+  margin-right: 1rem;
+}
+
+.image-credit {
+  text-align: center;
+  /*background-color: rgba(0, 0, 0, 0.5);*/
+  /*backdrop-filter: blur(10px);*/
+}
+
