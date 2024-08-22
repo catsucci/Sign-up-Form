@@ -62,6 +62,38 @@ for (const name in D_FIELD_S) {
         }
       });
       break;
+    //case "email":
+    //  D_FIELD_S[name].d_input.addEventListener("input", (event) => {
+    //    if (!IsEmpty(event.target.value)) {
+    //      if (IsEmailValid(event.target.value)) {
+    //        HandleNodeStates(D_FIELD_S[name].d_li, STATES.VALID);
+    //        HandleNodeStates(D_FIELD_S[name].d_label, STATES.VALID);
+    //      } else {
+    //        HandleNodeStates(D_FIELD_S[name].d_li, STATES.ERROR);
+    //        HandleNodeStates(D_FIELD_S[name].d_label, STATES.ERROR);
+    //      }
+    //    } else {
+    //      HandleNodeStates(D_FIELD_S[name].d_li, STATES.NILL);
+    //      HandleNodeStates(D_FIELD_S[name].d_label, STATES.NILL);
+    //    }
+    //  });
+    //  break;
+    //case "phone_number":
+    //  D_FIELD_S[name].d_input.addEventListener("input", (event) => {
+    //    if (!IsEmpty(event.target.value)) {
+    //      if (IsPhoneNumberValid(event.target.value)) {
+    //        HandleNodeStates(D_FIELD_S[name].d_li, STATES.VALID);
+    //        HandleNodeStates(D_FIELD_S[name].d_label, STATES.VALID);
+    //      } else {
+    //        HandleNodeStates(D_FIELD_S[name].d_li, STATES.ERROR);
+    //        HandleNodeStates(D_FIELD_S[name].d_label, STATES.ERROR);
+    //      }
+    //    } else {
+    //      HandleNodeStates(D_FIELD_S[name].d_li, STATES.NILL);
+    //      HandleNodeStates(D_FIELD_S[name].d_label, STATES.NILL);
+    //    }
+    //  });
+    //break;
     case "password":
     case "confirm_password":
       D_FIELD_S[name].state = STATES.NILL;
