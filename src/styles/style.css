@@ -23,7 +23,7 @@ body {
 
 .image-container {
   flex: 1 1 0;
-  background-image: url("../assets/images/mountain-by-samuel-ferrara.jpg");
+  background-image: url("../../public/assets/images/mountain-by-samuel-ferrara.jpg");
   background-size: cover;
   /*background-position: center;*/
 }
@@ -58,7 +58,6 @@ form {
 
 .button-container > button {
   padding: 1rem 2rem;
-  /*padding: 12px 28px;*/
   background-color: var(--primary-accent);
   border-style: none;
   border-radius: 5px;
@@ -84,7 +83,6 @@ form > fieldset > ul,
 form > fieldset {
   margin: 0;
   border-style: none;
-  /*background-color: white;*/
   padding: 16px 0 32px 0;
 }
 
@@ -108,13 +106,11 @@ form > fieldset > ul > li {
 }
 
 form > fieldset > ul > li  label {
-  /*width: fit-content;*/
   font-size: 1rem;
   color: var(--secondary-color);
 }
 
 form > fieldset > ul > li > input {
-  /*width: 75%;*/
   height: 2rem;
   background-color: var(--main-color);
   color: var(--white);
@@ -130,7 +126,6 @@ form > fieldset > ul > li > input {
 
 input:focus {
   outline: none;
-  /*border-style: none;*/
 }
 
 .in-focus {
