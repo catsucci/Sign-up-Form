@@ -7,6 +7,8 @@
  * Created: 2024-08-19
  */
 
+// Returns true if name has no number in it.
+// In case you didn't notice, there is a `!` in there.
 const IsNameValid = (text) => {
   return !(/\d/.test(text) || text.length < 2);
 };
@@ -19,6 +21,7 @@ const IsPhoneNumberValid = (text) => {
   return /^\d{10}$/.test(text);
 };
 
+// Password need to have a minimum length of 8 chars, 1 letter, 1capital letter and 1 special char
 export const IsPasswordValid = (text) => {
   return /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/.test(
     text,

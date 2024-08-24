@@ -3,6 +3,10 @@
 /**
  * main.js
  * Main JavaScript file for the project
+ * Note on variable naming:
+ * full uppercase names are for constants,
+ * d_/D_ stands for DOM element,
+ * _S/_s stands for multiple instances.
  * Author: Catsucci
  * Created: 2024-08-19
  */
@@ -21,25 +25,25 @@ const STATES = {
   NILL: null,
 };
 
-let D_FIELD_S = {};
+let d_fields_s = {};
 
 let passwords_matching = null;
 document.querySelectorAll("li").forEach((d_li) => {
   let name = d_li.querySelector("input").getAttribute("name");
-  D_FIELD_S[name] = {
+  d_fields_s[name] = {
     d_li: d_li,
     d_label: d_li.querySelector("label"),
     d_input: d_li.querySelector("input"),
   };
 });
 
-for (const name in D_FIELD_S) {
-  D_FIELD_S[name].d_input.addEventListener("focus", () => {
-    D_FIELD_S[name].d_li.classList.add("in-focus");
+for (const name in d_fields_s) {
+  d_fields_s[name].d_input.addEventListener("focus", () => {
+    d_fields_s[name].d_li.classList.add("in-focus");
   });
 
-  D_FIELD_S[name].d_input.addEventListener("blur", () => {
-    D_FIELD_S[name].d_li.classList.remove("in-focus");
+  d_fields_s[name].d_input.addEventListener("blur", () => {
+    d_fields_s[name].d_li.classList.remove("in-focus");
   });
 
   switch (name) {
@@ -47,100 +51,100 @@ for (const name in D_FIELD_S) {
     case "last_name":
     case "email":
     case "phone_number":
-      D_FIELD_S[name].d_input.addEventListener("input", (event) => {
+      d_fields_s[name].d_input.addEventListener("input", (event) => {
         if (!IsEmpty(event.target.value)) {
           if (IsValid(event.target.value, name)) {
-            HandleNodeStates(D_FIELD_S[name].d_li, STATES.VALID);
-            HandleNodeStates(D_FIELD_S[name].d_label, STATES.VALID);
+            HandleNodeStates(d_fields_s[name].d_li, STATES.VALID);
+            HandleNodeStates(d_fields_s[name].d_label, STATES.VALID);
           } else {
-            HandleNodeStates(D_FIELD_S[name].d_li, STATES.ERROR);
-            HandleNodeStates(D_FIELD_S[name].d_label, STATES.ERROR);
+            HandleNodeStates(d_fields_s[name].d_li, STATES.ERROR);
+            HandleNodeStates(d_fields_s[name].d_label, STATES.ERROR);
           }
         } else {
-          HandleNodeStates(D_FIELD_S[name].d_li, STATES.NILL);
-          HandleNodeStates(D_FIELD_S[name].d_label, STATES.NILL);
+          HandleNodeStates(d_fields_s[name].d_li, STATES.NILL);
+          HandleNodeStates(d_fields_s[name].d_label, STATES.NILL);
         }
       });
       break;
     case "password":
     case "confirm_password":
-      D_FIELD_S[name].state = STATES.NILL;
-      D_FIELD_S[name].d_input.addEventListener("input", (event) => {
+      d_fields_s[name].state = STATES.NILL;
+      d_fields_s[name].d_input.addEventListener("input", (event) => {
         if (IsEmpty(event.target.value)) {
-          D_FIELD_S[name].state = STATES.NILL;
+          d_fields_s[name].state = STATES.NILL;
         } else if (IsPasswordValid(event.target.value)) {
-          D_FIELD_S[name].state = STATES.VALID;
+          d_fields_s[name].state = STATES.VALID;
         } else {
-          D_FIELD_S[name].state = STATES.ERROR;
+          d_fields_s[name].state = STATES.ERROR;
         }
 
         if (
-          !(D_FIELD_S[name].state === STATES.NILL) &&
-          D_FIELD_S[GetCorrespondingField(name)].state === STATES.VALID
+          !(d_fields_s[name].state === STATES.NILL) &&
+          d_fields_s[GetCorrespondingField(name)].state === STATES.VALID
         ) {
           passwords_matching = IsPasswordsMatching(
-            D_FIELD_S[name].d_input.value,
-            D_FIELD_S[GetCorrespondingField(name)].d_input.value,
+            d_fields_s[name].d_input.value,
+            d_fields_s[GetCorrespondingField(name)].d_input.value,
           );
         }
 
         if (
           !passwords_matching &&
-          ((!(D_FIELD_S[name].state === STATES.NILL) &&
-            D_FIELD_S[GetCorrespondingField(name)].state === STATES.VALID) ||
-            (!(D_FIELD_S[GetCorrespondingField(name)].state === STATES.NILL) &&
-              D_FIELD_S[name].state === STATES.VALID))
+          ((!(d_fields_s[name].state === STATES.NILL) &&
+            d_fields_s[GetCorrespondingField(name)].state === STATES.VALID) ||
+            (!(d_fields_s[GetCorrespondingField(name)].state === STATES.NILL) &&
+              d_fields_s[name].state === STATES.VALID))
         ) {
-          HandleNodeStates(D_FIELD_S[name].d_li, STATES.WARNING);
-          HandleNodeStates(D_FIELD_S[name].d_label, STATES.WARNING);
+          HandleNodeStates(d_fields_s[name].d_li, STATES.WARNING);
+          HandleNodeStates(d_fields_s[name].d_label, STATES.WARNING);
           HandleNodeStates(
-            D_FIELD_S[GetCorrespondingField(name)].d_li,
+            d_fields_s[GetCorrespondingField(name)].d_li,
             STATES.WARNING,
           );
           HandleNodeStates(
-            D_FIELD_S[GetCorrespondingField(name)].d_label,
+            d_fields_s[GetCorrespondingField(name)].d_label,
             STATES.WARNING,
           );
-          D_FIELD_S[name].d_label.childNodes[0].nodeValue =
+          d_fields_s[name].d_label.childNodes[0].nodeValue =
             "PASSWORDS DO NOT MATCH";
-          D_FIELD_S[
+          d_fields_s[
             GetCorrespondingField(name)
           ].d_label.childNodes[0].nodeValue = "PASSWORDS DO NOT MATCH";
           return;
         }
 
-        switch (D_FIELD_S[name].state) {
+        switch (d_fields_s[name].state) {
           case STATES.VALID:
-            HandleNodeStates(D_FIELD_S[name].d_li, STATES.VALID);
-            HandleNodeStates(D_FIELD_S[name].d_label, STATES.VALID);
-            D_FIELD_S[name].d_label.childNodes[0].nodeValue =
+            HandleNodeStates(d_fields_s[name].d_li, STATES.VALID);
+            HandleNodeStates(d_fields_s[name].d_label, STATES.VALID);
+            d_fields_s[name].d_label.childNodes[0].nodeValue =
               name === "password" ? "PASSWORD" : "CONFIRM PASSWORD";
             break;
           case STATES.ERROR:
-            HandleNodeStates(D_FIELD_S[name].d_li, STATES.ERROR);
-            HandleNodeStates(D_FIELD_S[name].d_label, STATES.ERROR);
-            D_FIELD_S[name].d_label.childNodes[0].nodeValue =
+            HandleNodeStates(d_fields_s[name].d_li, STATES.ERROR);
+            HandleNodeStates(d_fields_s[name].d_label, STATES.ERROR);
+            d_fields_s[name].d_label.childNodes[0].nodeValue =
               "PASSWORD (sample: P@ssw0rd)";
             break;
           case STATES.NILL:
-            HandleNodeStates(D_FIELD_S[name].d_li, STATES.NILL);
-            HandleNodeStates(D_FIELD_S[name].d_label, STATES.NILL);
-            D_FIELD_S[name].d_label.childNodes[0].nodeValue =
+            HandleNodeStates(d_fields_s[name].d_li, STATES.NILL);
+            HandleNodeStates(d_fields_s[name].d_label, STATES.NILL);
+            d_fields_s[name].d_label.childNodes[0].nodeValue =
               name === "password" ? "PASSWORD" : "CONFIRM PASSWORD";
             break;
         }
 
-        switch (D_FIELD_S[GetCorrespondingField(name)].state) {
+        switch (d_fields_s[GetCorrespondingField(name)].state) {
           case STATES.VALID:
             HandleNodeStates(
-              D_FIELD_S[GetCorrespondingField(name)].d_li,
+              d_fields_s[GetCorrespondingField(name)].d_li,
               STATES.VALID,
             );
             HandleNodeStates(
-              D_FIELD_S[GetCorrespondingField(name)].d_label,
+              d_fields_s[GetCorrespondingField(name)].d_label,
               STATES.VALID,
             );
-            D_FIELD_S[
+            d_fields_s[
               GetCorrespondingField(name)
             ].d_label.childNodes[0].nodeValue =
               GetCorrespondingField(name) === "password"
@@ -149,27 +153,27 @@ for (const name in D_FIELD_S) {
             break;
           case STATES.ERROR:
             HandleNodeStates(
-              D_FIELD_S[GetCorrespondingField(name)].d_li,
+              d_fields_s[GetCorrespondingField(name)].d_li,
               STATES.ERROR,
             );
             HandleNodeStates(
-              D_FIELD_S[GetCorrespondingField(name)].d_label,
+              d_fields_s[GetCorrespondingField(name)].d_label,
               STATES.ERROR,
             );
-            D_FIELD_S[
+            d_fields_s[
               GetCorrespondingField(name)
             ].d_label.childNodes[0].nodeValue = "PASSWORD (sample: P@ssw0rd)";
             break;
           case STATES.NILL:
             HandleNodeStates(
-              D_FIELD_S[GetCorrespondingField(name)].d_li,
+              d_fields_s[GetCorrespondingField(name)].d_li,
               STATES.NILL,
             );
             HandleNodeStates(
-              D_FIELD_S[GetCorrespondingField(name)].d_label,
+              d_fields_s[GetCorrespondingField(name)].d_label,
               STATES.NILL,
             );
-            D_FIELD_S[
+            d_fields_s[
               GetCorrespondingField(name)
             ].d_label.childNodes[0].nodeValue =
               GetCorrespondingField(name) === "password"
